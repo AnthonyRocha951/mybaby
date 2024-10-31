@@ -76,12 +76,18 @@ function atualizarTimer() {
   const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
   // Exibir o tempo formatado no elemento HTML
-  document.getElementById("timer").innerHTML = `<div class="div-style-timer">
-                <p class="style-timer">${totalMeses} meses</p>
-                 <p class="style-timer">${diasRestantes} dias</p>
-                 <p class="style-timer">${horas} horas</p>
-                 <p class="style-timer">${minutos} minutos</p>
-                 <p class="style-timer">${segundos} segundos</p>
+  document.getElementById("timer").innerHTML = 
+               `<div class="div-style-timer">
+                <p class="style-timer">${totalMeses}<br>
+                <span>meses</span></p>
+                 <p class="style-timer">${diasRestantes}<br>
+                 <span>dias</span></p>
+                 <p class="style-timer">${horas}<br>
+                 <span>horas</span></p>
+                 <p class="style-timer">${minutos}<br>
+                 <span>minutos</span></p>
+                 <p class="style-timer">${segundos}<br>
+                 <span>segundos<span></p>
                  </div>`;
 }
 
