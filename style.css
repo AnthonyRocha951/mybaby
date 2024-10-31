@@ -1,9 +1,16 @@
 body {
-    font-family: Arial, sans-serif;  
+    font-family: Arial, sans-serif;
+    background-color: black;
 }
 
 h1 {
     text-align: center;
+    color: red;
+}
+
+h2 {
+    text-align: center;
+    color: white;
 }
 
 .carrossel {
@@ -12,6 +19,7 @@ h1 {
     margin: auto;
     overflow: hidden;
     position: relative;
+    margin-top: 50px;
 }
 .imagens {
     display: flex;
@@ -34,14 +42,24 @@ h1 {
     border-radius: 50%;
     background-color: gray;
     cursor: pointer;
+    margin-bottom: 100px;
 }
+
 .bola.ativa {
-    background-color: black;
+    background-color: red;
 }
 
 .timer {
     font-size: 24px;
     color: #333;
+}
+
+.texto {
+    margin: auto;
+    width: 300px;
+    color: white;
+    text-align: center;
+    margin-bottom: 100px;
 }
 
 .div-style-timer {
@@ -53,4 +71,5 @@ h1 {
 .style-timer {
     background-color: red;
     padding: 10px;
+    color: white;
 }
