@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Anthony & Sibele</title>
-
+    <title>Carrossel de Imagens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .carrossel {
+            width: 300px;
+            height: 400px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .imagens {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+        .imagem {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .indicadores {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .bola {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: gray;
+            cursor: pointer;
+        }
+        .bola.ativa {
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
 
@@ -30,12 +68,60 @@
             <!-- Adicione mais imagens conforme necessário -->
         </div>
     </div>
+    <div class="indicadores" id="indicadores"></div>
 
-    <h1>Quanto tempo de namoro eu tenho?</h1>
-    <div class="timer" id="timer"></div>
+    <script>
+        const carrossel = document.getElementById("carrossel");
+        const imagens = document.getElementById("imagens");
+        const indicadoresContainer = document.getElementById("indicadores");
+        const totalImagens = imagens.children.length;
+        let indice = 0;
+        let startX, currentX;
 
+        // Criar os indicadores
+        for (let i = 0; i < totalImagens; i++) {
+            const bola = document.createElement("div");
+            bola.classList.add("bola");
+            bola.addEventListener("click", () => mudarImagem(i));
+            indicadoresContainer.appendChild(bola);
+        }
 
-    <script src="script.js"></script>
+        // Atualiza o estado dos indicadores
+        function atualizarIndicadores() {
+            const bolas = document.querySelectorAll(".bola");
+            bolas.forEach((bola, index) => {
+                bola.classList.remove("ativa");
+                if (index === indice) {
+                    bola.classList.add("ativa");
+                }
+            });
+        }
+
+        carrossel.addEventListener("touchstart", (event) => {
+            startX = event.touches[0].clientX;
+        });
+
+        carrossel.addEventListener("touchmove", (event) => {
+            currentX = event.touches[0].clientX;
+            const diffX = startX - currentX;
+
+            if (diffX > 50) { // arraste para a esquerda
+                mudarImagem(1);
+                startX = currentX; // atualiza startX para o próximo movimento
+            } else if (diffX < -50) { // arraste para a direita
+                mudarImagem(-1);
+                startX = currentX; // atualiza startX para o próximo movimento
+            }
+        });
+
+        function mudarImagem(direcao) {
+            indice = (indice + direcao + totalImagens) % totalImagens; // Atualiza o índice de forma circular
+            imagens.style.transform = `translateX(${-indice * 100}%)`;
+            atualizarIndicadores(); // Atualiza os indicadores
+        }
+
+        atualizarIndicadores(); // Inicializa os indicadores
+    </script>
 
 </body>
 </html>
