@@ -52,11 +52,6 @@ h2 {
     background-color: rgb(255, 0, 0);
 }
 
-.timer {
-    font-size: 24px;
-    color: #333;
-}
-
 .texto {
     margin: auto;
     width: 300px;
@@ -64,6 +59,12 @@ h2 {
     text-align: center;
     margin-bottom: 100px;
     font-family: "Comic Neue", cursive;
+}
+
+.timer {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 100px
 }
 
 .div-style-timer {
@@ -85,3 +86,4 @@ h2 {
     color: white; 
     box-shadow: 0px 0px 24px 5px rgba(255,2,99,0.6);
 }
+
