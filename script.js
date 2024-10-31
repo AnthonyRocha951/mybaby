@@ -1,7 +1,29 @@
+// carrossel:
 const carrossel = document.getElementById("carrossel");
 const imagens = document.getElementById("imagens");
+const indicadoresContainer = document.getElementById("indicadores");
+const totalImagens = imagens.children.length;
 let indice = 0;
 let startX, currentX;
+
+// Criar os indicadores
+for (let i = 0; i < totalImagens; i++) {
+  const bola = document.createElement("div");
+  bola.classList.add("bola");
+  bola.addEventListener("click", () => mudarImagem(i));
+  indicadoresContainer.appendChild(bola);
+}
+
+// Atualiza o estado dos indicadores
+function atualizarIndicadores() {
+  const bolas = document.querySelectorAll(".bola");
+  bolas.forEach((bola, index) => {
+    bola.classList.remove("ativa");
+    if (index === indice) {
+      bola.classList.add("ativa");
+    }
+  });
+}
 
 carrossel.addEventListener("touchstart", (event) => {
   startX = event.touches[0].clientX;
@@ -23,11 +45,14 @@ carrossel.addEventListener("touchmove", (event) => {
 });
 
 function mudarImagem(direcao) {
-  const totalImagens = imagens.children.length;
   indice = (indice + direcao + totalImagens) % totalImagens; // Atualiza o índice de forma circular
   imagens.style.transform = `translateX(${-indice * 100}%)`;
+  atualizarIndicadores(); // Atualiza os indicadores
 }
 
+atualizarIndicadores(); // Inicializa os indicadores
+
+// timer:
 // Defina a data de início do namoro
 const namoroInicio = new Date("2024-10-05T00:00:00"); // Exemplo de data (mude para a sua data)
 

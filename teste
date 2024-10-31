@@ -30,6 +30,7 @@
             <!-- Adicione mais imagens conforme necessário -->
         </div>
     </div>
+    <div class="indicadores" id="indicadores"></div>
 
     <h1>Quanto tempo de namoro eu tenho?</h1>
     <div class="timer" id="timer"></div>
