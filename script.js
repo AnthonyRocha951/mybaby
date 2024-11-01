@@ -57,38 +57,27 @@ atualizarIndicadores(); // Inicializa os indicadores
 const namoroInicio = new Date("2024-10-05T00:00:00"); // Exemplo de data (mude para a sua data)
 
 function atualizarTimer() {
-  const agora = new Date();
-  const diferenca = agora - namoroInicio; // Diferença em milissegundos
+    const agora = new Date();
+    const diferenca = agora - namoroInicio; // Diferença em milissegundos
 
-  // Calcular a diferença total em meses
-  const totalMeses =
-    (agora.getFullYear() - namoroInicio.getFullYear()) * 12 +
-    (agora.getMonth() - namoroInicio.getMonth());
+    // Converter a diferença para dias, horas, minutos e segundos
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-  // Calcular dias restantes após contar os meses
-  const diasRestantes = Math.floor(
-    (diferenca % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
-  );
-  const horas = Math.floor(
-    (diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-  const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-
-  // Exibir o tempo formatado no elemento HTML
-  document.getElementById("timer").innerHTML = 
-               `<div class="div-style-timer">
-                <p class="style-timer">${totalMeses}<br>
-                <span>meses</span></p>
-                 <p class="style-timer">${diasRestantes}<br>
-                 <span>dias</span></p>
-                 <p class="style-timer">${horas}<br>
-                 <span>horas</span></p>
-                 <p class="style-timer">${minutos}<br>
-                 <span>minutos</span></p>
-                 <p class="style-timer">${segundos}<br>
-                 <span>segundos<span></p>
-                 </div>`;
+// Exibir o tempo formatado no elemento HTML
+document.getElementById("timer").innerHTML = 
+             `<div class="div-style-timer">
+               <p class="style-timer">${dias}<br>
+               <span>dias</span></p>
+               <p class="style-timer">${horas}<br>
+               <span>horas</span></p>
+               <p class="style-timer">${minutos}<br>
+               <span>minutos</span></p>
+               <p class="style-timer">${segundos}<br>
+               <span>segundos<span></p>
+               </div>`;
 }
 
 // Atualize o timer a cada segundo
