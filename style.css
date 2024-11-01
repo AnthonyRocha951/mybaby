@@ -92,9 +92,8 @@ h2 {
     margin-bottom: 100px
 }
 
-li {
+.lista {
     color: white;
-    list-style-type: none;
     margin-bottom: 20px;
     font-family: "Comic Neue", cursive;
 }
