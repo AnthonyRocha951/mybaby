@@ -1,3 +1,5 @@
+alert("Presente de 1 mês de namoro adiantado. Te amo amor")
+
 // carrossel:
 const carrossel = document.getElementById("carrossel");
 const imagens = document.getElementById("imagens");
