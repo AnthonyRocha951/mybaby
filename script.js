@@ -1,3 +1,5 @@
+alert('Nova Atualizaçao do site <3 Te amo')
+
 // carrossel:
 const carrossel = document.getElementById("carrossel");
 const imagens = document.getElementById("imagens");
